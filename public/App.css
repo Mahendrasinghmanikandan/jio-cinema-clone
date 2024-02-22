@@ -1,0 +1,60 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { FaChevronLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
+
+const App = () => {
+    return (
+        <div className="bg-black w-screen h-screen flex items-center justify-center px-20">
+            <Swiper
+                modules={[Navigation, Autoplay]}
+                spaceBetween={20}
+                slidesPerView={3}
+                autoplay
+                speed={1000}
+                navigation={{
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                }}
+                centeredSlides
+                loop
+                zoom
+                className="py-10"
+            >
+                {[
+                    "https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/ind_vs_eng_test_carousel-1707065734737.jpg",
+                    "https://v3img.voot.com/resizeMedium,w_1090,h_613/jioimage/newcpp/6575ebd290c0640b2f5fec2e/6575ebd290c0640b2f5fec2e_1702226921395_aa.jpg",
+                    "https://v3img.voot.com/v3Storage/assets/sports_zone_cricket_horizontal-1695032322122.jpg",
+                    "https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/ind_vs_eng_test_carousel-1707065734737.jpg",
+                    "https://v3img.voot.com/resizeMedium,w_1090,h_613/jioimage/newcpp/6575ebd290c0640b2f5fec2e/6575ebd290c0640b2f5fec2e_1702226921395_aa.jpg",
+                ].map((res, index) => {
+                    return (
+                        <SwiperSlide
+                            key={index}
+                            className={`object-cover transition-all  duration-1000 ease-in-out`}
+                        >
+                            <img
+                                src={res}
+                                className="object-cover w-[inherit] rounded-lg !h-[60vh] "
+                            />
+                        </SwiperSlide>
+                    );
+                })}
+                <div className="absolute bottom-10 right-28 z-50">
+                    <div className="swiper-button-prev  w-[50px] h-[50px] border-2 border-white rounded-full">
+                        <FaAngleRight className="text-white !w-[20px] !h-[20px]" />
+                    </div>
+                    <div className="swiper-button-next w-[50px] h-[50px] border-2 border-white rounded-full">
+                        <FaChevronLeft className="text-white  !w-[20px] !h-[20px]" />
+                    </div>
+                </div>
+            </Swiper>
+        </div>
+    );
+};
+
+export default App;
